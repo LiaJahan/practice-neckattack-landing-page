@@ -1,0 +1,682 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>neckattack® - Mobile Massage für Unternehmen</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background-color: #f8f9fa;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%);
+            color: black;
+            padding: 20px 0;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links a {
+            color: black;
+            text-decoration: none;
+            font-weight: 500;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.8;
+        }
+
+        .cta-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 10px 25px;
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+            color: black;
+            padding: 180px 0 100px;
+            text-align: center;
+        }
+
+        .hero h1 {
+            font-size: 48px;
+            margin-bottom: 20px;
+            font-weight: 700;
+        }
+
+        .hero p {
+            font-size: 20px;
+            margin-bottom: 40px;
+            color: #333;
+        }
+
+        .hero-stats {
+            display: flex;
+            justify-content: center;
+            gap: 60px;
+            margin-top: 60px;
+            flex-wrap: wrap;
+        }
+
+        .stat-item {
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 36px;
+            font-weight: bold;
+            display: block;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        /* Services Section */
+        .services {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%);
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 36px;
+            margin-bottom: 60px;
+            color: #333;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            text-align: center;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+
+        .service-icon {
+            font-size: 48px;
+            margin-bottom: 20px;
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            margin-bottom: 15px;
+            color: #667eea;
+        }
+
+        .service-card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Why Choose Us */
+        .why-us {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .feature-item {
+            display: flex;
+            align-items: flex-start;
+            gap: 20px;
+        }
+
+        .feature-number {
+            font-size: 48px;
+            font-weight: bold;
+            color: #667eea;
+            line-height: 1;
+        }
+
+        .feature-content h3 {
+            font-size: 20px;
+            margin-bottom: 10px;
+            color: #333;
+        }
+
+        .feature-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8eaf6 100%);
+        }
+
+        .testimonial-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+            gap: 30px;
+        }
+
+        .testimonial-card {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+            border-left: 4px solid #667eea;
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            color: #555;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            font-weight: bold;
+            color: #333;
+        }
+
+        .testimonial-company {
+            color: #667eea;
+            font-size: 14px;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #e8eaf6 0%, #f3e5f5 100%);
+            color: black;
+        }
+
+        .process .section-title {
+            color: black;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .process-step {
+            text-align: center;
+            padding: 30px;
+        }
+
+        .step-number {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 24px;
+            font-weight: bold;
+            margin: 0 auto 20px;
+        }
+
+        .process-step h3 {
+            font-size: 20px;
+            margin-bottom: 15px;
+        }
+
+        .process-step p {
+            color: #555;
+            line-height: 1.6;
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 100px 0;
+            background: linear-gradient(135deg, #f3e5f5 0%, #e8eaf6 100%);
+        }
+
+        .contact-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .contact-info h3 {
+            font-size: 28px;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .contact-info p {
+            color: #666;
+            margin-bottom: 15px;
+            line-height: 1.6;
+        }
+
+        .contact-details {
+            margin-top: 30px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .contact-icon {
+            font-size: 24px;
+            color: #667eea;
+        }
+
+        .contact-form {
+            background: #f8f9fa;
+            padding: 40px;
+            border-radius: 10px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+        }
+
+        .form-group input,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+            font-family: inherit;
+        }
+
+        .form-group textarea {
+            height: 120px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .submit-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        /* Footer */
+        footer {
+            background: #333;
+            color: white;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        .footer-links a {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+
+        .footer-links a:hover {
+            opacity: 0.8;
+        }
+
+        .copyright {
+            color: #999;
+            font-size: 14px;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero h1 {
+                font-size: 32px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            .hero-stats {
+                gap: 30px;
+            }
+
+            .stat-number {
+                font-size: 28px;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <nav>
+                <a href="#" class="logo">neckattack®</a>
+                <div class="nav-links">
+                    <a href="#services">Leistungen</a>
+                    <a href="#why-us">Warum wir</a>
+                    <a href="#testimonials">Referenzen</a>
+                    <a href="#contact">Kontakt</a>
+                </div>
+                <a href="#contact" class="cta-button">Contact Us</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <h1>Mobile Massage für Unternehmen</h1>
+            <p>Motivieren Sie Ihre Mitarbeiter im Büro und entspannen Sie jedes Event. In ganz Deutschland mit über 500 Masseuren.</p>
+            <a href="#contact" class="cta-button">Jetzt Mitarbeiter motivieren</a>
+            
+            <div class="hero-stats">
+                <div class="stat-item">
+                    <span class="stat-number">500+</span>
+                    <span class="stat-label">Masseure</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">200+</span>
+                    <span class="stat-label">Städte</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">15</span>
+                    <span class="stat-label">Jahre Erfahrung</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-number">95%</span>
+                    <span class="stat-label">Terminwahrscheinlichkeit</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="services" id="services">
+        <div class="container">
+            <h2 class="section-title">Unsere Leistungen</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon">🏢</div>
+                    <h3>Büromassage</h3>
+                    <p>Mobile Massagen direkt am Arbeitsplatz. Unsere Profis besuchen Unternehmen jeder Größe im ganzen Bundesgebiet.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎪</div>
+                    <h3>Event & Messe Massage</h3>
+                    <p>Gönnen Sie Ihren Messe-Besuchern eine kleine Auszeit vom Messestress. Bleiben Sie in bester Erinnerung!</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🎯</div>
+                    <h3>Promotion Massage</h3>
+                    <p>Der perfekte Kundenmagneten für Agenturen und Marketing. Für jede Roadshow oder POS Aktion.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🏠</div>
+                    <h3>Homeoffice Massage</h3>
+                    <p>Wellness und Entspannung direkt nach Hause. Auf dem Massagestuhl oder der Liege – ganz wie Sie möchten.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">💻</div>
+                    <h3>Virtuelle Wellnessangebote</h3>
+                    <p>NEU: Digitale Wellness-Konzepte für remote Teams und moderne Arbeitswelten.</p>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon">🌍</div>
+                    <h3>International</h3>
+                    <p>Nicht nur deutschlandweit: Auch in großen Städten Europas und weltweit verfügbar.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="why-us" id="why-us">
+        <div class="container">
+            <h2 class="section-title">Warum neckattack?</h2>
+            <div class="features-grid">
+                <div class="feature-item">
+                    <div class="feature-number">15</div>
+                    <div class="feature-content">
+                        <h3>Jahre Erfahrung</h3>
+                        <p>Seit 15 Jahren bietet neckattack mobile Massage im B2B Bereich an. Mit dieser Erfahrung können wir fast jeden Firmenwunsch erfüllen.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">⭐</div>
+                    <div class="feature-content">
+                        <h3>Höchste Qualität</h3>
+                        <p>Durch mehrstufige Auswahlverfahren, kontinuierliche Weiterbildung und langjährige Erfahrung sichern wir beste Qualität und Zuverlässigkeit.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">👥</div>
+                    <div class="feature-content">
+                        <h3>Junges Team</h3>
+                        <p>In unserem Team von über 500 Masseuren befinden sich viele junge Masseure, die gerade auf Messen immer sehr beliebt sind.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">👑</div>
+                    <div class="feature-content">
+                        <h3>V.I.P. Masseure</h3>
+                        <p>VIP Masseure mit über 30 Jahren Massageerfahrung. Für die perfekte Massage oder spezielle Anforderungen.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">🗺️</div>
+                    <div class="feature-content">
+                        <h3>Deutschlandweit</h3>
+                        <p>In fast jeder Stadt in Deutschland und in größeren Städten in Europa. Durch viele alternative Masseure ist jeder Termin zu 95% möglich.</p>
+                    </div>
+                </div>
+                <div class="feature-item">
+                    <div class="feature-number">💰</div>
+                    <div class="feature-content">
+                        <h3>Transparente Preise</h3>
+                        <p>Keine versteckten Kosten. Sie bekommen ein passendes Angebot mit allen anfallenden Kosten am gleichen Tag.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <h2 class="section-title">Unsere zufriedenen Kunden</h2>
+            <div class="testimonial-grid">
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Mit Ihrem neuartigen Massagekonzept und der professionellen Art begeisterte neckattack unsere Gäste. Das sympathische Team können wir nur jedem unserer Kunden empfehlen. Besonders gefallen hat uns die unkomplizierte und frische Art der Masseure."</p>
+                    <p class="testimonial-author">Eric Tapper</p>
+                    <p class="testimonial-company">Sales Manager HILTON Frankfurt</p>
+                </div>
+                <div class="testimonial-card">
+                    <p class="testimonial-text">"Liebes neckattack-Team, wir wollen Ihnen ein großes Lob aussprechen! Im Rahmen des 'Keep-Up' Programms haben wir heute einige ihrer Mitarbeiter bei uns in der Berliner Filiale willkommen geheißen. Die junge Dame und der junge Herr haben hervorragende Arbeit geleistet und uns für einige Zeit den stressigen Berufsalltag vergessen lassen!"</p>
+                    <p class="testimonial-author">Lufthansa Deutschland</p>
+                    <p class="testimonial-company">Customer-Airlines-Control-Center Team</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="process">
+        <div class="container">
+            <h2 class="section-title">So einfach geht's</h2>
+            <div class="process-steps">
+                <div class="process-step">
+                    <div class="step-number">1</div>
+                    <h3>Anfrage senden</h3>
+                    <p>Schreiben Sie uns eine E-Mail an hallo@neckattack.net oder nutzen Sie unser Kontaktformular.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">2</div>
+                    <h3>Angebot erhalten</h3>
+                    <p>Sie bekommen am gleichen Tag ein passendes Angebot mit allen anfallenden Kosten.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">3</div>
+                    <h3>Bestätigung</h3>
+                    <p>Nach Bestätigung erhalten Sie die Auftragsbestätigung mit den Masseur-Details.</p>
+                </div>
+                <div class="process-step">
+                    <div class="step-number">4</div>
+                    <h3>Massage genießen</h3>
+                    <p>Unsere Masseure kommen 15 Minuten vorher zur Vorbereitung. Sie entspannen sich!</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="contact-content">
+                <div class="contact-info">
+                    <h3>Contact Us</h3>
+                    <p>Schreiben Sie uns einfach eine kurze E-Mail oder nutzen Sie unser Kontaktformular. Sie bekommen am gleichen Tag ein passendes Angebot mit allen anfallenden Kosten.</p>
+                    
+                    <div class="contact-details">
+                        <div class="contact-item">
+                            <span class="contact-icon">📧</span>
+                            <span>hallo@neckattack.net</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">📞</span>
+                            <span>08003 380 380</span>
+                        </div>
+                        <div class="contact-item">
+                            <span class="contact-icon">🕐</span>
+                            <span>Mo-Do: 09:00-17:00, Fr: 09:00-13:00</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="contact-form">
+                    <form>
+                        <div class="form-group">
+                            <label for="name">Name</label>
+                            <input type="text" id="name" name="name" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="company">Firma</label>
+                            <input type="text" id="company" name="company">
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-Mail</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="message">Nachricht</label>
+                            <textarea id="message" name="message" required></textarea>
+                        </div>
+                        <button type="submit" class="submit-button">Contact Us</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <div class="footer-links">
+                <a href="#">Über uns</a>
+                <a href="#">Massagearten</a>
+                <a href="#">Städte</a>
+                <a href="#">Jobs</a>
+                <a href="#">Kontakt</a>
+            </div>
+            <p class="copyright">© 2024 neckattack® - Mobile Massage für Unternehmen</p>
+        </div>
+    </footer>
+</body>
+</html>
